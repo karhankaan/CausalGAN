@@ -7,7 +7,7 @@ import os
 slim = tf.contrib.slim
 from causal_controller.models import lrelu,DiscriminatorW,Grad_Penalty
 from causal_controller.utils import summary_stats,did_succeed
-from causal_controller.ArrayDict import ArrayDict#Collector of outputs
+from ArrayDict import ArrayDict#Collector of outputs
 
 debug=False
 

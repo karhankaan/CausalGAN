@@ -10,10 +10,10 @@ import pandas as pd
 from itertools import combinations, product
 import sys
 
-from utils import save_figure_images#makes grid image plots
+from figure_scripts.utils import save_figure_images#makes grid image plots
 
 #convenience functions
-from utils import make_sample_dir,guess_model_step,infer_grid_image_shape
+from figure_scripts.utils import make_sample_dir,guess_model_step,infer_grid_image_shape
 
 
 from IPython.core import debugger
@@ -246,7 +246,7 @@ def do2feed( do_dict, model, on_logits=True):
         shape=[len(value)]+tf_shape[1:]
         try:
             feed_dict[tensor]=np.reshape(value,shape)
-        except Exception,e:
+        except Exception:
             print('Unexpected difficulty reshaping inputs:',tensor.name, tf_shape, len(value), np.size(value))
             raise e
     return feed_dict
@@ -683,8 +683,8 @@ def condition2d( model, cond_dict,cond_dict_name,step='', on_logits=True):
                 #otherwise pass a number, list, or array
                 assert(not isinstance(value,str))
 
-    except Exception, e:
-        raise(e,'Difficulty accessing default model interventions')
+    except Exception:
+        raise('Difficulty accessing default model interventions')
 
 
     str_step=str(step)
@@ -803,8 +803,8 @@ def intervention2d(model, fetch=None, do_dict=None, do_dict_name=None, on_logits
                 #otherwise pass a number, list, or array
                 assert(not isinstance(value,str))
 
-    except Exception, e:
-        raise(e,'Difficulty accessing default model interventions')
+    except Exception:
+        raise('Difficulty accessing default model interventions')
 
 
     str_step=str(step)

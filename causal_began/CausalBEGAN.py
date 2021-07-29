@@ -2,7 +2,7 @@ from __future__ import print_function
 from utils import save_image,distribute_input_data,summary_stats,make_summary
 import pandas as pd
 import os
-import StringIO
+from io import StringIO
 import scipy.misc
 import numpy as np
 from glob import glob
@@ -12,8 +12,8 @@ from collections import deque
 from figure_scripts.pairwise import crosstab
 from figure_scripts.sample import intervention2d,condition2d
 
-from utils import summary_stats
-from models import *
+from causal_began.utils import summary_stats
+from causal_began.models import *
 
 class CausalBEGAN(object):
     '''

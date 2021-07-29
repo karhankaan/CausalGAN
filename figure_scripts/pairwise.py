@@ -9,7 +9,7 @@ from tqdm import trange
 import pandas as pd
 from itertools import combinations
 import sys
-from sample import sample
+from figure_scripts.sample import sample
 
 
 

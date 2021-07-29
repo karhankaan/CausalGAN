@@ -3,9 +3,9 @@ import numpy as np
 slim = tf.contrib.slim
 import math
 
-from ops import lrelu,linear,conv_cond_concat,batch_norm,add_minibatch_features
+from causal_dcgan.ops import lrelu,linear,conv_cond_concat,batch_norm,add_minibatch_features
 
-from ops import conv2d,deconv2d
+from causal_dcgan.ops import conv2d,deconv2d
 
 
 def conv_out_size_same(size, stride):

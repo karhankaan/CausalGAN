@@ -59,10 +59,10 @@ def download_celeb_a(base_path):
     else:
         download_file_from_google_drive(drive_id, save_path)
 
-    zip_dir = ''
-    with zipfile.ZipFile(save_path) as zf:
-        zip_dir = zf.namelist()[0]
-        zf.extractall(base_path)
+    # zip_dir = ''
+    # with zipfile.ZipFile(save_path) as zf:
+    #     zip_dir = zf.namelist()[0]
+    #     zf.extractall(base_path)
     if not os.path.exists(data_path):
         os.mkdir(data_path)
     os.rename(os.path.join(base_path, "img_align_celeba"), images_path)
@@ -78,7 +78,7 @@ def download_attr_file(data_path):
     delete_top_line(attr_fname)#make pandas readable
     #Top line was just an integer saying how many samples there were
 
-def prepare_data_dir(path = './data'):
+def prepare_data_dir(path = '.\data'):
     if not os.path.exists(path):
         os.mkdir(path)
 
@@ -92,7 +92,9 @@ def check_link(in_dir, basename, out_dir):
 
 def add_splits(base_path):
     data_path = os.path.join(base_path, 'celebA')
+    print(data_path)
     images_path = os.path.join(data_path, 'images')
+    print(images_path)
     train_dir = os.path.join(data_path, 'splits', 'train')
     valid_dir = os.path.join(data_path, 'splits', 'valid')
     test_dir = os.path.join(data_path, 'splits', 'test')
@@ -123,7 +125,7 @@ def delete_top_line(txt_fname):
     open(txt_fname,'w').writelines(lines[1:])
 
 if __name__ == '__main__':
-    base_path = './data'
-    prepare_data_dir()
-    download_celeb_a(base_path)
+    base_path = '.\data'
+    #prepare_data_dir()
+    #download_celeb_a(base_path)
     add_splits(base_path)

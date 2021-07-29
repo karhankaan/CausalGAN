@@ -12,13 +12,13 @@ import pandas as pd
 import sys
 import scipy.stats as stats
 
-from models import GeneratorCNN,DiscriminatorCNN,discriminator_labeler
-from models import discriminator_gen_labeler,discriminator_on_z
+from causal_dcgan.models import GeneratorCNN,DiscriminatorCNN,discriminator_labeler
+from causal_dcgan.models import discriminator_gen_labeler,discriminator_on_z
 
 from tensorflow.core.framework import summary_pb2
 from tensorflow.contrib import slim
 
-from ops import batch_norm,lrelu
+from causal_dcgan.ops import batch_norm,lrelu
 
 from causal_graph import get_causal_graph
 

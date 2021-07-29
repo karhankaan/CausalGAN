@@ -1,3 +1,5 @@
+import numpy as np
+
 '''
 To use a particular causal graph, just specify it here
 
@@ -322,6 +324,25 @@ causal_graphs={
        ]
 }
 
+def mat_to_parent(W, label_names = None):
+    n = W.shape[0]
+    ls = []
+    for i in range(n):
+        parents = []
+        for j in range(n):
+            if W[j,i] != 0:
+                if label_names:
+                    parents.append(label_names[j])
+                else:
+                    parents.append(j)
+        if label_names:
+            ls.append([label_names[i], parents])
+        else:
+            ls.append([i, parents])
+    return ls
+
+
+
 def get_causal_graph(causal_model=None,*args,**kwargs):
 
     #define complete_all
@@ -333,10 +354,10 @@ def get_causal_graph(causal_model=None,*args,**kwargs):
         so_far.append(node)
     causal_graphs['complete_all']=complete_all
 
-
     if not causal_model in causal_graphs.keys():
-        raise ValueError('the specified graph:',causal_model,' was not one of\
-                         those listed in ',__file__)
+        return list(causal_model)
+        # raise ValueError('the specified graph:',causal_model,' was not one of\
+        #                  those listed in ',__file__)
 
     else:
         return causal_graphs[causal_model]
